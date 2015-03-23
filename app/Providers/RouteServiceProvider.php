@@ -1,5 +1,6 @@
 <?php namespace App\Providers;
 
+use App\Page;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -25,6 +26,9 @@ class RouteServiceProvider extends ServiceProvider {
 		parent::boot($router);
 
         $router->model('page', 'App\Page');
+        $router->bind('page', function($slug) {
+            return Page::findBySlug($slug);
+        });
 		//
 	}
 
