@@ -35,12 +35,12 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Accueil</a></li>
-                <li><a href="#about">Hébergements</a></li>
-                <li><a href="#contact">Services</a></li>
-                <li><a href="#contact">Disponibilités</a></li>
+                
                 <li><a href="{{ route('blog.index') }}">Blog</a></li>
-                <li><a href="#contact">A proximité</a></li>
-                <li><a href="#contact">Livre d'or</a></li>
+
+                @foreach($pages as $slug => $title)
+                    <li><a href="{{route('page.show', [$slug])}}">{{ $title  }}</a></li>
+                @endforeach
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
