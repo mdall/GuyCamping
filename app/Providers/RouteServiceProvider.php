@@ -26,10 +26,12 @@ class RouteServiceProvider extends ServiceProvider {
 		parent::boot($router);
 
         $router->model('page', 'App\Page');
-        $router->bind('page', function($slug) {
-            return Page::findBySlug($slug);
+        $router->bind('page', function($id) {
+            if(is_numeric($id))
+                return Page::find($id);
+            return Page::findBySlug($id);
         });
-		//
+        //
 	}
 
 	/**
