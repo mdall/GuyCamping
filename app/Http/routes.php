@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@index');
 
 Route::resource('blog', 'BlogController');
 Route::resource('page', 'PageController');
+Route::resource('hebergement', 'HebergementController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

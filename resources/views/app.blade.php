@@ -35,7 +35,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Accueil</a></li>
-                
+                <li><a href="{{ route('hebergement.index') }}">Hébergements</a></li>
                 <li><a href="{{ route('blog.index') }}">Blog</a></li>
 
                 @foreach($pages as $slug => $title)
@@ -55,6 +55,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ route('page.create') }}">Ajouter une page</a></li>
+                            <li><a href="{{ route('blog.create') }}">Ajouter une article de blog</a></li>
+                            <li><a href="{{ route('hebergement.create') }}">Ajouter un type d'hébergement</a></li>
                             <li><a href="{{ url('/auth/logout') }}">Déconnexion</a></li>
                         </ul>
                     </li>
