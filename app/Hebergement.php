@@ -4,14 +4,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hebergement extends Model {
 
-    protected $fillable = ['name', 'nbEmplacements', 'options', 'images'];
+    protected $fillable = ['name', 'description', 'options', 'images'];
 
-	public function getPrixAttribute() {
-        return json_decode($this->attributes['prix']);
-    }
-
-    public function getOuvertureAttribute() {
-        return json_decode($this->attributes['ouverture']);
+	public function getPlageAttribute() {
+        return json_decode($this->attributes['plage']);
     }
 
     public function getOptionsAttribute() {
@@ -22,12 +18,8 @@ class Hebergement extends Model {
         return json_decode($this->attributes['images']);
     }
 
-    public function setPrixAttribute(Array $val) {
-        $this->attributes['prix'] = json_encode($val);
-    }
-
-    public function setOuvertureAttribute(Array $val) {
-        $this->attributes['ouverture'] = json_encode($val);
+    public function setPlageAttribute(Array $val) {
+        $this->attributes['plage'] = json_encode($val);
     }
 
     public function setOptionsAttribute(Array $val) {

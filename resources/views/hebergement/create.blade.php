@@ -11,17 +11,20 @@
             {!! Form::text('name', null, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::label('nbEmplacements', 'Nombre d\'emplacements : ') !!}
-            {!! Form::text('nbEmplacements', null, ['class'=>'form-control']) !!}
+
         </div>
         <div class="form-group" id="groupeSemaine">
             <div class="form-inline">
-                {!! Form::label('plage[0]', 'Plage de semaines : ') !!}
-                {!! Form::text('plage[0]', null, ['class'=>'form-control', 'placeholder' => '10-34']) !!}
-                {!! Form::label('ouverture[0]', ' Ouverture : ') !!}
-                {!! Form::select('ouverture[0]', array(true => 'Oui', false => 'Non'), null, ['class'=>'form-control']) !!}
-                {!! Form::label('prix[0]', ' Prix : ') !!}
-                {!! Form::text('prix[0]', null, ['class'=>'form-control']) !!}
+                {!! Form::label('plage[0][debut]', 'Date de début : ') !!}
+                {!! Form::input('date', 'plage[0][debut]', null, ['class'=>'form-control']) !!}
+                {!! Form::label('plage[0][fin]', 'Date de fin : ') !!}
+                {!! Form::input('date', 'plage[0][fin]', null, ['class'=>'form-control']) !!}
+                {!! Form::label('plage[0][ouverture]', ' Ouverture : ') !!}
+                {!! Form::select('plage[0][ouverture]', array(true => 'Oui', false => 'Non'), null, ['class'=>'form-control']) !!}
+                {!! Form::label('plage[0][prix]', ' Prix : ') !!}
+                {!! Form::text('plage[0][prix]', null, ['class'=>'form-control']) !!}
+                {!! Form::label('plage[0][nbEmplacements]', 'Nombre d\'emplacements : ') !!}
+                {!! Form::text('plage[0][nbEmplacements]', null, ['class'=>'form-control']) !!}
 
                 {!! Form::button('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter une plage',
                     ['class' => 'btn form-control', 'id'=> 'addPlage']) !!}
@@ -43,7 +46,10 @@
                     ['class' => 'btn form-control', 'id'=> 'addImage']) !!}
             </div>
         </div>
-
+        <div class="form-group">
+            {!! Form::label('name', 'Description : ') !!}
+            {!! Form::text('description', null, ['class'=>'form-control']) !!}
+        </div>
 
 
         <div class="form-group">

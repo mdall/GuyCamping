@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/hebergement/lister', 'HebergementController@lister');
 
 Route::resource('blog', 'BlogController');
 Route::resource('page', 'PageController');

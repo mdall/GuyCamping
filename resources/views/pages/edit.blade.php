@@ -12,11 +12,13 @@
             {!! Form::label('title', 'Titre : ') !!}
             {!! Form::text('title', $page->title, ['class'=>'form-control', 'id' => 'pagetitle']) !!}
         </div>
-        <div class="form-group">
-            {!! Form::textarea('body', $page->content, ['class'=>'form-control', 'id'=>'content2', 'rows'=>'25', 'style' => 'display:none']) !!}
+        <div class="form-group" style="display:none" id="divcontent2">
+            Contenu (HTML) :
+            {!! Form::textarea('body', $page->content, ['class'=>'form-control', 'id'=>'content2', 'rows'=>'25']) !!}
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="divcontent">
+            Contenu (Aperçu direct) :
             <div class="container-fluid form-control" contenteditable="true" id="content" style="min-height:500px;">
                 {!! $page->content !!}
             </div>
@@ -74,8 +76,8 @@
         })
 
         $("#toggleHtml").click(function(e) {
-            $('#content').toggle()
-            $('#content2').toggle()
+            $('#divcontent').toggle()
+            $('#divcontent2').toggle()
         })
     </script>
 @stop

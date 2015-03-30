@@ -19,6 +19,10 @@ class HebergementController extends Controller {
 		return view('hebergement.index', compact('hebergements'));
 	}
 
+    public function lister() {
+        return Hebergement::all();
+    }
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -37,24 +41,19 @@ class HebergementController extends Controller {
 	public function store(Request $request)
 	{
         //Ces paramètres peuvent être associés directement au modèle
-        $hebergement = Hebergement::create($request->only('name', 'nbEmplacements', 'options', 'images'));
+        $hebergement = Hebergement::create($request->only('name', 'options', 'images', 'description'));
 
-        //Transformation des autres paramètres
-        $arrOuverture = [];
-        $arrPrix = [];
-        $ouvertures = $request->get('ouverture');
-        $prix = $request->get('prix');
+        //Transformation des autres paramètres (plage)
+        $plages = $request->get('plage');
 
-        foreach($request->get('plage') as $plage) {
-            if(is_null($plage)) continue;
-            list(,$arrOuverture[$plage]) = each($ouvertures);
-            if($arrOuverture[$plage]) {
-                list(,$arrPrix[$plage]) = each($prix);
+        foreach($plages as $key => $plage) {
+            //on enlève les lignes complètement vides
+            if(empty($plage['debut']) || empty($plage['fin']) ) {
+                unset($plages[$key]);
             }
         }
 
-        $hebergement->ouverture = $arrOuverture;
-        $hebergement->prix = $arrPrix;
+        $hebergement->plage = $plages;
 
         $hebergement->save();
 

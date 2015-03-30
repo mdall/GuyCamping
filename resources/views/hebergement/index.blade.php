@@ -7,11 +7,21 @@
         <h2>Liste :</h2>
         @foreach($hebergements as $h)
             <ul>
-                <li>Nombre d'emplacements: {{ $h->nbEmplacements }}</li>
-                <li>Prix (€): {{json_encode($h->prix)}}</li>
-                <li>Ouverture: {{json_encode($h->ouverture)}}</li>
-                <li>Options: {{json_encode($h->options)}}</li>
-                <li>Images: {{json_encode($h->images)}}</li>
+                <li>Nom : {{ $h->name }}</li>
+                <li>Description : {{ $h->description }}</li>
+                <li>Options : {{ implode(',', $h->options) }}</li>
+                <li>Images : {{ implode(',', $h->images) }}</li>
+                @foreach($h->plage as $plage)
+                <li>
+                    <ul>
+                        <li>Début : {{ $plage->debut }}</li>
+                        <li>Fin : {{ $plage->fin }}</li>
+                        <li>Nombre d'emplacements : {{ $plage->nbEmplacements }}</li>
+                        <li>Ouverture : {{$plage->ouverture}}</li>
+                        <li>Prix : {{$plage->prix}}</li>
+                    </ul>
+                </li>
+                @endforeach
             </ul>
         @endforeach
     </div>
