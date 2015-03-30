@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class HebergementController extends Controller {
 
+    /**
+     * Auth required for some actions
+     */
+    function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'lister', 'show']]);
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 *
