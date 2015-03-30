@@ -38,4 +38,15 @@ class AuthController extends Controller {
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
+    // Registration closed
+    public function getRegister()
+    {
+        return redirect(url('/'))->withErrors(["Registration disabled !"]);
+    }
+
+    public function postRegister()
+    {
+        return redirect(url('/'));
+    }
+
 }
