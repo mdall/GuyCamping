@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding-top:30px;">
         <h1>Ajouter un type d'hébergement</h1>
 
         <hr/>
@@ -21,7 +21,7 @@
                 {!! Form::input('date', 'plage[0][fin]', null, ['class'=>'form-control']) !!}
                 {!! Form::label('plage[0][ouverture]', ' Ouverture : ') !!}
                 {!! Form::select('plage[0][ouverture]', array(true => 'Oui', false => 'Non'), null, ['class'=>'form-control']) !!}
-                {!! Form::label('plage[0][prix]', ' Prix : ') !!}
+                {!! Form::label('plage[0][prix]', ' Prix/j : ') !!}
                 {!! Form::text('plage[0][prix]', null, ['class'=>'form-control']) !!}
                 {!! Form::label('plage[0][nbEmplacements]', 'Nombre d\'emplacements : ') !!}
                 {!! Form::text('plage[0][nbEmplacements]', null, ['class'=>'form-control']) !!}

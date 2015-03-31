@@ -56,7 +56,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ route('page.create') }}">Ajouter une page</a></li>
                                     <li><a href="{{ route('blog.create') }}">Ajouter une article de blog</a></li>
-                                    <li><a href="{{ route('hebergement.create') }}">Ajouter un type d'hébergement</a></li>
+                                    <li><a href="{{ route('hebergement.index') }}">Gestion des hébergements</a></li>
                                     <li><a href="{{ url('/auth/logout') }}">Déconnexion</a></li>
                                 </ul>
                             </li>

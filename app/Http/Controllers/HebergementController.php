@@ -3,7 +3,6 @@
 use App\Hebergement;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 
 class HebergementController extends Controller {
@@ -76,7 +75,8 @@ class HebergementController extends Controller {
 	 */
 	public function show($id)
 	{
-		return Hebergement::find($id);
+        $hebergement = Hebergement::find($id);
+        return view('hebergement.show', compact('hebergement'));
 	}
 
 	/**
@@ -87,7 +87,8 @@ class HebergementController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $hebergement = Hebergement::find($id);
+        return view('hebergement.edit', compact('hebergement'));
 	}
 
 	/**
@@ -96,9 +97,12 @@ class HebergementController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+        $hebergement = Hebergement::find($id);
+        $hebergement->update($request->all());
+        $hebergement->plage = $request->get('plage');//pas de mass assignment de la plage
+        return redirect(route('hebergement.index'));
 	}
 
 	/**

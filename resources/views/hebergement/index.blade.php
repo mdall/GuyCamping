@@ -1,28 +1,23 @@
 @extends('app')
 
 @section('content')
-    <div class="container-fluid">
-        <h1>Gestion des hébergements</h1>
-
-        <h2>Liste :</h2>
+    <div class="container" style="padding-top:30px;">
+        <h1>Gestion des hébergements
+        <a href="{{route('hebergement.create')}}" class="btn btn-primary pull-right">Ajouter</a></h1>
+        <p>Cette page permet de gérer les détails des hébergements pour pouvoir afficher des détails au visiteurs ainsi que pour pouvoir les transmettre à une centrale de réservation.</p>
+        <ul class="list-group" style="padding-top:20px;">
         @foreach($hebergements as $h)
-            <ul>
-                <li>Nom : {{ $h->name }}</li>
-                <li>Description : {{ $h->description }}</li>
-                <li>Options : {{ implode(',', $h->options) }}</li>
-                <li>Images : {{ implode(',', $h->images) }}</li>
+            <li class="list-group-item">
+                <a href="{{route('hebergement.edit', $h->id)}}" class="btn btn-default pull-right">Editer</a>
+                <u>Nom</u> : {{ $h->name }}<br/>
+                <u>Description</u> : {{ $h->description }}<br/>
+                <u>Options</u> : {{ implode(', ', $h->options) }}<br/>
+                <u>Images</u> : {{ implode(', ', $h->images) }}<br/>
                 @foreach($h->plage as $plage)
-                <li>
-                    <ul>
-                        <li>Début : {{ $plage->debut }}</li>
-                        <li>Fin : {{ $plage->fin }}</li>
-                        <li>Nombre d'emplacements : {{ $plage->nbEmplacements }}</li>
-                        <li>Ouverture : {{$plage->ouverture}}</li>
-                        <li>Prix : {{$plage->prix}}</li>
-                    </ul>
-                </li>
+                 du {{ $plage->debut }} au {{ $plage->fin }}, {{ $plage->nbEmplacements }} emplacements, ouverture: {{$plage->ouverture ? "Oui" : "Non"}}, prix: {{$plage->prix}}€<br/>
                 @endforeach
-            </ul>
+            </li>
         @endforeach
+        </ul>
     </div>
 @stop
