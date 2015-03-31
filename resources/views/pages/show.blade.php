@@ -2,7 +2,7 @@
 
 @section('rightheader')
     @if(Auth::check())
-        <li><a href="{{ route('page.edit', [$page->id]) }}">Edit</a></li>
+        <li><a href="{{ route('page.edit', [$page->id]) }}">Editer</a></li>
     @endif
 @stop
 
