@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container" style="padding-top:30px;">
     <h1>Blog</h1>
 
     <article>

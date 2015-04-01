@@ -37,12 +37,10 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="/">Accueil</a></li>
-                        <li><a href="{{ route('hebergement.index') }}">Hébergements</a></li>
-                        <li><a href="{{ route('blog.index') }}">Blog</a></li>
                         @foreach($pages as $slug => $title)
                             <li><a href="{{route('page.show', [$slug])}}">{{ $title  }}</a></li>
                         @endforeach
+                        <li><a href="{{ route('blog.index') }}">Blog</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @yield('rightheader')
@@ -76,6 +74,9 @@
 <!-- Scripts -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<script src="http://figuel.meteor.com/collect.js"></script>
+<script>FiguelAnalytics.init('MRoXRgiNqfpbAEKDh')</script>
 @yield('scripts')
 </body>
 </html>

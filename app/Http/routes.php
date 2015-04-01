@@ -10,8 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\Http\Controllers;
+use App\Page;
+use Illuminate\Support\Facades\View;
 
-Route::get('/', 'HomeController@index');
+Route::get('/', function(){
+    return redirect(url('/page/accueil'));
+});
 Route::get('/hebergement/lister', 'HebergementController@lister');
 
 Route::resource('blog', 'BlogController');
